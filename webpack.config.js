@@ -1,77 +1,49 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const PATHS = {
-    root: path.join(__dirname, '/'),
-    src: path.join(__dirname, '/src'),
-    dist: path.join(__dirname, '/dist'),
-};
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 config = {
-    // Mode can be 'development' or 'production'
-    mode: 'development',
-
     entry: './src/js/index.js',
-
     output: {
         filename: 'main.js',
-        path: PATHS.dist,
+        path: path.resolve(__dirname, 'dist')
     },
-
+    mode: 'development',
     module: {
         rules: [
             {
-                test: /\.html$/,
-                use: 'html-loader'
-            },
-            {
-                enforce: 'pre',
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'eslint-loader',
+                test: /\.html/,
+                loader: 'html-loader',
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                loader: 'babel-loader',
             },
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             },
             {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            context: PATHS.src,
-                            name: `[path][name].[ext]`,
-                            esModule: false,
-                        },
-                    }
-                ]
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        name: '[path][name].[ext]',
-                        esModule: false,
-                    },
-                }]
+                type: 'asset/resource'
             },
         ]
     },
-
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html'
         }),
-    ]
+        new ESLintPlugin({
+            context: path.resolve(__dirname, 'src'),
+            files: 'js/**/*.js',
+        })
+    ],
+    stats: 'normal'
 };
 module.exports = config;

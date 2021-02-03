@@ -1,9 +1,5 @@
-module.exports = ({options}) => ({
-    plugins: {
-        'autoprefixer': {grid: 'autoplace'},
-        'postcss-flexbugs-fixes': {},
-        'cssnano': options.env === 'production'
-    }
-});
-
-
+module.exports = {
+    plugins: [
+        require('autoprefixer')({grid: 'autoplace'}),
+        require('postcss-flexbugs-fixes')]
+};
