@@ -1,4 +1,6 @@
 import $ from 'jquery';
+import QuoteTemplate from './hbs/quote.hbs';
+
 /*
 * Objectif : récupérer une citation aléatoire à partir d'une API et l'afficher
 *
@@ -16,9 +18,8 @@ export default class Quote {
 
     initEls () {
         this.$els = {
-            quoteText: $('.js-quote-text'),
-            quoteAuthor: $('.js-quote-author'),
             container: $('.js-container'),
+            quote: $('.js-quote'),
         };
     }
 
@@ -47,9 +48,8 @@ export default class Quote {
          const quoteContent = quoteData[0].content.rendered;
          const quoteAuthor = quoteData[0].title.rendered;
 
-         this.$els.quoteText.prepend(quoteContent);
-         this.$els.quoteAuthor.text(quoteAuthor);
-
+         const quote = QuoteTemplate({text: quoteContent, author: quoteAuthor});
+         this.$els.quote.html(quote);
          this.$els.container.addClass('is-ready');
     }
 }

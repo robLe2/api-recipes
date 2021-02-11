@@ -35,6 +35,14 @@ config = {
                 loader: 'html-loader',
             },
             /*
+            * Test des fichiers HBS
+            * hbs-loader : dit à Webpack comment interpreter le code des templates hbs,
+            */
+            {
+                test: /\.hbs/,
+                loader: 'handlebars-loader',
+            },
+            /*
              * Test des fichiers .scss
              * MiniCssExtractPlugin.loader : extrait le code CSS importé dans les fichiers JavaScript
              * css-loader : dit à Webpack comment interpreter le code CSS
