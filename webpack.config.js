@@ -6,7 +6,7 @@ config = {
     entry: './src/js/index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
     },
     mode: 'development',
     module: {
@@ -14,6 +14,9 @@ config = {
             {
                 test: /\.html/,
                 loader: 'html-loader',
+            },{
+                test: /\.hbs/,
+                loader: 'handlebars-loader',
             },
             {
                 test: /\.js$/,
@@ -22,28 +25,27 @@ config = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
             {
                 test: /\.(woff(2)?|ttf|eot|svg)$/,
-                type: 'asset/resource'
+                type: 'asset/resource',
             },
-        ]
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: 'index.html'
+            filename: 'index.html',
         }),
         new ESLintPlugin({
             context: path.resolve(__dirname, 'src'),
             files: 'js/**/*.js',
-        })
+        }),
     ],
-    stats: 'normal'
 };
 module.exports = config;

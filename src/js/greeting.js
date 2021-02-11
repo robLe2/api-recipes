@@ -1,3 +1,5 @@
+import $ from 'jquery';
+import {getGreetingByTime} from './helper/greetingsHelper';
 /*
 * Objectif : déterminer un "salut" en fonction de l'heure et l'afficher
 *
@@ -7,3 +9,36 @@
 * 3- Récupérer une valeur aléatoire à partir d'un tableau
 * 4- Afficher le résultat
 * */
+
+export default class Greeting {
+
+    constructor () {
+        this.initEls();
+        this.initEvents();
+    }
+
+    initEls () {
+        this.$els = {
+            greeting: $('.js-greeting'),
+        };
+        this.names = ['S4', 'developer', 'you', 'my friend'];
+    }
+
+    initEvents () {
+        this.displayMessage();
+    }
+
+    selectName () {
+        const i = Math.floor(Math.random() * this.names.length);
+        return this.names[i];
+    }
+
+    makeMessage () {
+        return `Good ${getGreetingByTime()}, ${this.selectName()}`;
+    }
+
+    displayMessage () {
+        this.$els.greeting.text(this.makeMessage());
+    }
+
+}
