@@ -1,0 +1,27 @@
+.apply-filter {
+  width: 60%;
+  margin: auto;
+  margin-top: 2%;
+
+  button {
+    width: 100%;
+    margin: auto;
+    padding: 12px 0 12px 0;
+    background-color: white;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    color: $color-main;
+    font-size: 125%;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: $shadow-main;
+    transition: all 50ms;
+  }
+
+  button:active {
+    transform: translateY(2px);
+    box-shadow: $shadow-pressed;
+  }
+}

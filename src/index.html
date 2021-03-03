@@ -5,10 +5,45 @@
     <title>Recipes search App</title>
 </head>
 <body>
-<div class="container js-container">
-    <div class="js-recipe">
+    <div class="wrap">
+        <div class="left-part">
+            <div class="searchbar">
+                <input type="text" id="searched-recipe-name" placeholder="Chercher une  recette par nom">
+                <div id="search-button" onclick="">
+                    <img src="img/searchIcon.svg">
+                </div>
+            </div>
+            <div class="filtered-search">
+                <p>Filtrer la recherche</p>
+                <div>
+                    <div class="left-select">
+                        <label for="dishtype-select">Type de recette</label>
+                        <select name="dishtype" id="dishtype-select">
+                            <option value="all">Toutes</option>
+                            <option value="starter">Entrée</option>
+                            <option value="main-course">Plat</option>
+                            <option value="dessert">Dessert</option>
+                        </select>
+                    </div>
+                    <div class="right-select">
+                        <label for="diet-select">Type de régime</label>
+                        <select name="diet" id="diet-select">
+                            <option value="none">Aucun</option>
+                            <option value="pork-free">Sans porc</option>
+                            <option value="gluten-free">Sans gluten</option>
+                            <option value="vegan">Vegan</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="apply-filter">
+                <button>Appliquer les filtres</button>
+            </div>
+        </div>
 
+        <div class="right-part">
+
+        </div>
     </div>
-</div>
 </body>
 </html>

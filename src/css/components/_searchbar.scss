@@ -1,0 +1,26 @@
+.searchbar {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 100px;
+  padding: 10px 30px 10px 30px;
+  box-shadow: $shadow-main;
+  input {
+    width: 100%;
+    font-size: 125%;
+    color: $color-black;
+    border-style: none;
+    background-color: rgba(0, 0, 0, 0.0);
+  }
+  input::placeholder {
+    color: $color-grey;
+    font-size: 100%;
+  }
+  div {
+    cursor: pointer;
+  }
+}
+
+textarea, select, input, button { outline: none; }

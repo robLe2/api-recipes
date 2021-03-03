@@ -2,13 +2,12 @@
 @import "config/reset";
 @import "config/font-face";
 @import "config/variables";
-@import "config/mixins";
 @import "config/global";
 
 // Layouts
 @import "layouts/homepage";
 
 // Components
-@import "components/background";
-@import "components/greeting";
-@import "components/quote";
+@import "components/searchbar";
+@import "components/filtered-search";
+@import "components/apply-button";

@@ -1,19 +1,26 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100%;
-  width: 90%;
-  margin: auto;
-  text-align: center;
-  z-index: 1;
-  @extend %opacity-transition;
+body {
+  font-family: $font-main;
+  background-color: $color-main;
+  color: $color-black;
+  height: 100vh;
 }
 
-body {
+.wrap {
+  width: 90%;
+  margin: auto;
+  margin-top: 5%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+}
+
+.left-part {
+  width: 40%;
+  margin: auto;
+  display: flex;
   flex-direction: column;
+}
+
+.right-part {
+  width: 40%;
+  margin: auto;
 }

@@ -10,7 +10,7 @@ export default class Recipe {
     initEls() {
         this.$els = {
             container: $('.js-container'),
-            recipe: $('.js-recipe'),
+            recipe: $('.right-part'),
         }
     }
 
@@ -33,16 +33,35 @@ export default class Recipe {
     }
 
     renderRecipe (recipeData) {
-        console.log(recipeData); //Affiche la data correspondant au endpoint
+        //console.log(recipeData); //Affiche la data correspondant au endpoint
         const recipeCount = recipeData.to;
-        console.log(recipeCount);
-        const recipeRand = Math.floor(Math.random() * recipeCount)
+        const recipeRand = Math.floor(Math.random() * recipeCount);
+        console.log(recipeRand);
 
         const recipeTitle = recipeData.hits[recipeRand].recipe.label;
         const recipeImage = recipeData.hits[recipeRand].recipe.image;
+        const recipeUrl = recipeData.hits[recipeRand].recipe.url;
+        const recipeSource = recipeData.hits[recipeRand].recipe.source;
+        const recipeYield = recipeData.hits[recipeRand].recipe.yield;
+        const recipeCalories = recipeData.hits[recipeRand].recipe.calories;
+        const recipeIngredients = recipeData.hits[recipeRand].recipe.ingredientLines;
 
-        const recipe = RecipeTemplate({title: recipeTitle, image: recipeImage});
-        this.$els.recipe.html(recipe);
+        console.log(
+            'Titre : '+recipeTitle+' Url : '+recipeUrl+
+            ' Source : '+recipeSource+' Nb personnes : '+recipeYield+' Cal : '+recipeCalories+
+            ' Ingrédients : '+recipeIngredients[1]
+        );
+
+        const recipe = RecipeTemplate({
+            title: recipeTitle,
+            image: recipeImage,
+            url: recipeUrl,
+            source: recipeSource,
+            number: recipeYield,
+            calories: recipeCalories,
+            ingredients: recipeIngredients
+        });
+        this.$els.recipe.append(recipe);
         this.$els.container.addClass('is-ready');
     }
 }

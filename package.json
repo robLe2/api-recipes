@@ -10,6 +10,7 @@
   "author": "Agus G - contact@agusgarcia.com",
   "license": "ISC",
   "dependencies": {
+    "bourbon": "^7.0.0",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
     "webpack": "^5.18.0",
